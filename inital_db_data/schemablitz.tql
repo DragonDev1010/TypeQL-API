@@ -1,0 +1,16 @@
+define
+  node sub entity,
+    plays connect:parent,
+    plays connect:child,
+    owns id @key,
+    owns node_value;
+
+  id sub attribute,
+    value long;
+  
+  node_value sub attribute,
+    value string;
+
+  connect sub relation,
+    relates parent,
+    relates child;

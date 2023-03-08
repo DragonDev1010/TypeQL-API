@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon indx.js"
+    "test": "mocha --timeout 10000",
+    "start": "nodemon routes.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.21",
     "stream-json": "^1.7.5",
     "typedb-client": "^2.14.2"

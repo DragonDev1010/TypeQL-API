@@ -1,0 +1,58 @@
+## getting root node
+#match
+#    $root isa node, has id $root-id, has node_value $root-value;
+#    not {
+#        (parent: $parent, child: $root) isa connect;
+#    };
+#get $root-id, $root-value;
+
+## grouping by parent node
+#match
+#    $node isa node, has id $node-id, has node_value $node-value;
+#    $connect (parent: $node, child: $child) isa connect;
+#    $child isa node, has id $child-id;
+#    
+#get $node, $node-id, $node-value, $child-id; group  $node-id;
+
+## getting all children node ids
+#match
+#    $p isa node, has id $p-id, has node_value $p-value;
+#    $con (parent: $p, child: $c) isa connect;
+#    $c isa node, has id $c-id;
+#get $p-id, $p-value, $c-id; group $p-id;
+
+## getting all nodes
+#match
+#    $node isa node, has id $n-id, has node_value $n-value;
+#get $node, $n-id, $n-value;
+
+## Delete one entity
+#match
+#    $n isa node, has id 1;
+#delete $n isa node;
+
+#insert $n isa node, has id 1, has node_value "new one";
+
+## Delete all entities
+#match
+#    $n isa node;
+#delete $n isa node;
+#match
+#    $c isa connect;
+# delete $c isa connect;
+
+#match
+#    $n isa node;
+#get $n;
+#
+#match
+#    $c isa connect;
+#get $c;
+
+match 
+    $p isa node, has id $p-id, has node_value $p-value; 
+    $con (parent: $p, child: $c) isa connect; 
+    $c isa node, has id $c-id; 
+get $p-id, $p-value, $c-id; group $p-id;
+
+
