@@ -29,15 +29,17 @@ function convertTypeqlToArray(tree_graph_nodes_array, tree_graph_connects_array)
 
 function convertTreeArrayToJson(treeArray, parentNode) {
   var jsonData = {}
-  if (parentNode.nodes !== null) {
-    var nodes_array = []
-    parentNode.nodes.map((child_node_id) => {
-      const child_node_item = get_node(treeArray, child_node_id)
-      nodes_array.push(convertTreeArrayToJson(treeArray, child_node_item))
-    })
-    Object.assign(jsonData, {id: parentNode.id, value: parentNode.value}, {nodes: nodes_array})
-  } else {
-    Object.assign(jsonData, {id: parentNode.id, value: parentNode.value})
+  if (parentNode !== null) {
+    if (parentNode.nodes !== null) {
+      var nodes_array = []
+      parentNode.nodes.map((child_node_id) => {
+        const child_node_item = get_node(treeArray, child_node_id)
+        nodes_array.push(convertTreeArrayToJson(treeArray, child_node_item))
+      })
+      Object.assign(jsonData, {id: parentNode.id, value: parentNode.value}, {nodes: nodes_array})
+    } else {
+      Object.assign(jsonData, {id: parentNode.id, value: parentNode.value})
+    }
   }
   return jsonData
 }

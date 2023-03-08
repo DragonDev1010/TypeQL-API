@@ -16,11 +16,11 @@ const build_tree_graph = async () => {
 
   for (input of inital_data_input) {
     console.log("Loading from [" + input.dataPath + "] into TypeDB ...");
-    await loadDataIntoTypeDB(input, session); // 3
+    await loadDataIntoTypeDB(input, session);
   }
 
-  await session.close(); // 4
-  client.close(); // 5
+  await session.close();
+  client.close();
 }
 
 async function loadDataIntoTypeDB(input, session) {

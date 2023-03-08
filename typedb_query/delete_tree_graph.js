@@ -7,7 +7,11 @@ async function delete_tree_graph() {
   const writeTransaction = await session.transaction(TransactionType.WRITE)
 
   const node_del_query_future = await writeTransaction.query.delete("match $n isa node; delete $n isa node;")
+  // writeTransaction.commit()
   const connect_del_query_future = await writeTransaction.query.delete("match $c isa connect; delete $c isa connect;")
+  writeTransaction.commit()
+
+  return { node_del_query_future, connect_del_query_future }
 }
 
-module.exports = {delete_tree_graph}
+module.exports = { delete_tree_graph }

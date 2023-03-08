@@ -3,11 +3,17 @@ const express = require('express')
 const {get_tree_graph} = require('./typedb_query/get_tree_graph')
 const {build_tree_graph} = require('./typedb_query/build_tree_graph')
 const {delete_tree_graph} = require('./typedb_query/delete_tree_graph')
+const {insert_new_tree_graph} = require('./typedb_query/insert_new_tree_graph')
 const { convertTypeqlToJson } = require('./functions/convertTypeqlToJson')
 const app = express()
 const cors = require('cors')
+const bodyParser = require('body-parser')
 
 app.use(cors())
+app.use(bodyParser.urlencoded({}));
+
+app.use(bodyParser.json({}));
+
 app.listen(
   process.env.SERVER_PORT || 8080,
   () => { console.log(`Example app listening on port ${process.env.SERVER_PORT || 8080}`) }
@@ -34,5 +40,7 @@ app.get('/delete', async (req, res) => {
 })
 
 app.post('/save', async (req, res) => {
+  await delete_tree_graph()
+  await insert_new_tree_graph(req.body)
   res.send('post request is called')
 })

@@ -33,7 +33,7 @@
 
 #insert $n isa node, has id 1, has node_value "new one";
 
-## Delete all entities
+# Delete all entities
 #match
 #    $n isa node;
 #delete $n isa node;
