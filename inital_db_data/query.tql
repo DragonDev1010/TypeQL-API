@@ -49,10 +49,15 @@
 #    $c isa connect;
 #get $c;
 
-match 
-    $p isa node, has id $p-id, has node_value $p-value; 
-    $con (parent: $p, child: $c) isa connect; 
-    $c isa node, has id $c-id; 
-get $p-id, $p-value, $c-id; group $p-id;
+#match 
+#    $p isa node, has id $p-id, has node_value $p-value; 
+#    $con (parent: $p, child: $c) isa connect; 
+#    $c isa node, has id $c-id; 
+#get $p-id, $p-value, $c-id; group $p-id;
+
+match
+    $n isa node;
+    $c isa connect;
+get $n, $c;
 
 

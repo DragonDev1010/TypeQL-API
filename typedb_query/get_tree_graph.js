@@ -39,20 +39,8 @@ async function get_tree_graph() {
     "match $root isa node, has id $root-id, has node_value $root-value; not { (parent: $parent, child: $root) isa connect; }; get $root-id, $root-value;"
   )
   for await (const root_item of root_node_stream) {
-    // const root_id = root_item.get('root-id')
-    // root_node.id = root_id.value
     root_node.id = root_item.get('root-id').value
   }
-
-  // let tree_graph_connects_array = []
-  // let tree_graph_connects_stream = await readTransaction.query.match(
-  //   "match $con (parent: $con-p, child: $con-c) isa connect; $con-p has id $con-p-id; $con-c has id $con-c-id; get $con-p-id, $con-c-id;"
-  // )
-  // for await (const connect_item of tree_graph_connects_stream) {
-  //   const connect_parent_node_id = connect_item.get('con-p-id')
-  //   const connect_child_node_id = connect_item.get('con-c-id')
-  //   tree_graph_connects_array.push({parent_id: connect_parent_node_id.value, child_id: connect_child_node_id.value})
-  // }
 
   await readTransaction.close()
   await session.close()

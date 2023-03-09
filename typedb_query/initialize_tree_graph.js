@@ -10,7 +10,7 @@ const inital_data_input = [
   { dataPath: "./inital_db_data/nodeConnect", template: nodeConnectTemplate }
 ]
 
-const build_tree_graph = async () => {
+const initialize_tree_graph = async () => {
   const client = TypeDB.coreClient(process.env.DATABASE_CONNECT_URL)
   const session = await client.session(process.env.DATABASE_NAME, SessionType.DATA);
 
@@ -77,4 +77,4 @@ function parseDataToObjects(input) {
   });
 }
 
-module.exports = {build_tree_graph}
+module.exports = {initialize_tree_graph}

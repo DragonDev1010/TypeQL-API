@@ -44,11 +44,11 @@ function convertTreeArrayToJson(treeArray, parentNode) {
   return jsonData
 }
 
-function convertTypeqlToJson(tree_graph_nodes_array, tree_graph_connects_array, root_node_id) {
+function convert_typeql_to_json(tree_graph_nodes_array, tree_graph_connects_array, root_node_id) {
   var tree_graph_array = convertTypeqlToArray(tree_graph_nodes_array, tree_graph_connects_array)
   var root_node = get_node(tree_graph_array, root_node_id)
 
   var jsonData = convertTreeArrayToJson(tree_graph_array, root_node)
   return jsonData
 }
-module.exports = {convertTypeqlToJson}
+module.exports = {convert_typeql_to_json}
